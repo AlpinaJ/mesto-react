@@ -5,7 +5,6 @@ import Main from '../components/Main.js';
 import Footer from "./Footer.js";
 import PopupWithForm from "./PopupWithForm.js";
 import ImagePopup from "./ImagePopup.js";
-import api from "../utils/Api.js";
 
 function App() {
     const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false);
@@ -18,8 +17,6 @@ function App() {
     const handleAddPlaceClick = () => setAddPlacePopupOpen(true);
     const handleCardClick = (card) => setSelectedCards(card);
 
-
-
     function closeAllPopups() {
         setEditProfilePopupOpen(false);
         setAddPlacePopupOpen(false);
@@ -27,6 +24,7 @@ function App() {
         setSelectedCards(false);
     }
 
+    // Подключаем закрытие попапов нажатием клавиши Escape
     useEffect(() => {
         function handleEscapeClose(event) {
             if (event.code === 'Escape') {
@@ -109,7 +107,7 @@ function App() {
                     buttonContent={"Сохранить"}
                 />
                 <ImagePopup
-                    card = {selectedCard}
+                    card={selectedCard}
                     onClose={closeAllPopups}
                 />
                 <div className="popup popup_type_delete">

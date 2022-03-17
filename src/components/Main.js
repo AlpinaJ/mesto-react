@@ -8,15 +8,15 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
     const [userAvatar, setUserAvatar] = useState('');
     const [cards, setCards] = useState([]);
 
-    // Получаем информацию о пользователе с сервера
-    useEffect(() =>{
-        api.getUserInfo().then(res =>{
+    // Получаем информацию о пользователе и карточках с сервера
+    useEffect(() => {
+        api.getUserInfo().then(res => {
             setUserName(res.name);
             setUserDescription(res.about);
             setUserAvatar(res.avatar);
         });
 
-        api.getInitialCards().then(res=>{
+        api.getInitialCards().then(res => {
             setCards(res);
         })
     }, []);
@@ -32,7 +32,8 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
                     <div className="profile__description">
                         <div className="profile__text">
                             <h1 className="profile__title">{userName}</h1>
-                            <button id="edit-button" className="profile__edit-button" type="button" onClick={onEditProfile}>
+                            <button id="edit-button" className="profile__edit-button" type="button"
+                                    onClick={onEditProfile}>
                             </button>
                         </div>
                         <h2 className="profile__subtitle">{userDescription}</h2>
@@ -42,7 +43,7 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
                 </button>
             </section>
             <section className="main">
-                { cards.map((card) => ( <Card card={card} onCardClick={onCardClick} key={card._id}/>))}
+                {cards.map((card) => (<Card card={card} onCardClick={onCardClick} key={card._id}/>))}
             </section>
         </main>
     )
