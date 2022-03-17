@@ -49,3 +49,7 @@
 @import url('../src/blocks/card/__thrash/_active/card__thrash_active.css');
 @import url('../src/blocks/profile/__avatar-image/profile__avatar-image.css');
 
+#root{
+    background-color: black;
+    min-height: 100vh;
+}
