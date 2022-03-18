@@ -20,7 +20,7 @@ function App() {
         setEditProfilePopupOpen(false);
         setAddPlacePopupOpen(false);
         setEditAvatarPopupOpen(false);
-        setSelectedCards(false);
+        setSelectedCards({});
     }
 
     // Подключаем закрытие попапов нажатием клавиши Escape
