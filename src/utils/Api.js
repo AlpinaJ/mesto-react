@@ -32,9 +32,18 @@ class Api {
             headers: this._headers,
             body: JSON.stringify({
                 name: input.name,
-                about: input.description
+                about: input.about
             })
         }).then((res) => this._handleResponse(res));
+    }
+
+    setUserAvatar(input) {
+        return fetch(`${this._url}/users/me/avatar`, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({avatar: input}),
+        })
+            .then((res) => this._handleResponse(res));
     }
 
     postCard(input) {
@@ -42,7 +51,7 @@ class Api {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
-                name: input.name,
+                name: input.place,
                 link: input.link
             })
         }).then((res) => this._handleResponse(res));
@@ -56,21 +65,29 @@ class Api {
             .then((res) => this._handleResponse(res));
     }
 
-    putLike(cardId) {
+    changeLikeCardStatus(cardId, isLiked) {
         return fetch(`${this._url}/cards/${cardId}/likes`, {
-            method: 'PUT',
+            method: isLiked ? 'PUT' : "DELETE",
             headers: this._headers
         })
             .then((res) => this._handleResponse(res));
     }
 
-    deleteLike(cardId) {
-        return fetch(`${this._url}/cards/${cardId}/likes`, {
-            method: 'DELETE',
-            headers: this._headers
-        })
-            .then((res) => this._handleResponse(res));
-    }
+    // putLike(cardId) {
+    //     return fetch(`${this._url}/cards/${cardId}/likes`, {
+    //         method: 'PUT',
+    //         headers: this._headers
+    //     })
+    //         .then((res) => this._handleResponse(res));
+    // }
+    //
+    // deleteLike(cardId) {
+    //     return fetch(`${this._url}/cards/${cardId}/likes`, {
+    //         method: 'DELETE',
+    //         headers: this._headers
+    //     })
+    //         .then((res) => this._handleResponse(res));
+    // }
 
     changeAvatar(avatar) {
         return fetch(`${this._url}/users/me/avatar`, {
