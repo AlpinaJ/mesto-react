@@ -5,6 +5,11 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
     const [place, setPlace] = useState('');
     const [link, setLink] = useState('');
 
+    useEffect(()=>{
+        setPlace('');
+        setLink('');
+    },[isOpen]);
+
     function handleSubmit(e){
         e.preventDefault();
 
